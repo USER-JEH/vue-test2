@@ -1,30 +1,24 @@
 <template>
-    <div class="demo">
+     <div class="school">
         <h2>name: {{schoolName}}</h2>
         <h2>address: {{address}}</h2>
-        <button @click="showName">Click to show school name</button>
     </div>
 </template>
 
 <script>
-    export default{
-        name:'School',
-        data() {
-            return {
-                schoolName:'Google',
-                address:'NewYork'
-            }
-        },
-        methods: {
-            showName(){
-                alert(this.schoolName)
-            }
-        },
-    }
+export default {   
+    name : 'School',
+    data() {
+        return {
+            schoolName: 'google',
+            address:'baidu'
+        }
+    },
+}
 </script>
 
 <style>
-    .demo{
-        background-color: orange;
-    }
+ .school{
+     background-color: aqua;
+ }
 </style>

@@ -1,21 +1,21 @@
 <template>
-    <div>
-        <img src="./assets/logo.png" alt="logo">
-        <School></School>
-        <Student></Student>
-    </div>
+  <div>
+      <School/>
+      <School/>
+      <School/>
+          
+  </div>
 </template>
 
 <script>
-    import School from './components/School'
-    import Student from './components/Student'
+import School from './components/Shool'
 
-    export default {
-        name:'App',
-        components:{
-            School,
-            Student
-        }
+export default {
+    name:'App',
+    components:{School}
 }
 </script>
 
+<style>
+
+</style>
