@@ -1,12 +1,12 @@
 <template>
      <div>
-        <h2>School name: {{name | mySlice}}</h2>
+        <h2 @click="showName">School name: {{name}}</h2>
         <h2>School address: {{address}}</h2>
-        <button @click="test">Click me to test hello </button>
     </div>
 </template>
 
 <script>
+// import {hunhe} from '../mixin'
 export default {   
     name : 'School',
     data() {
@@ -15,11 +15,7 @@ export default {
             address:'beijing'
         }
     },
-    methods: {
-        test(){
-            this.hello()
-        }
-    },
+    // mixins:[hunhe]
 }
   
 </script>

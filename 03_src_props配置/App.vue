@@ -1,18 +1,15 @@
 <template>
   <div>
-    <Student/>
-    <hr>
-    <School/>
+    <Student name="baidu" gender="female" :age="18"/>
   </div>
 </template>
 
 <script>
-import School from './components/School'
 import Student from './components/Student'
 
 export default {
     name:'App',
-    components:{School,Student},
+    components:{Student},
 }
 </script>
 

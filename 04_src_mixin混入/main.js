@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-
-// pluginsを引用
-import plugins from './plugins'
+//全域引用
+import {hunhe} from './mixin'
 
 Vue.config.productionTip = false
-
-// pluginsを引用
-Vue.use(plugins)
+//全域引用
+Vue.mixin(hunhe)
 
 new Vue({
     el:'#app',
