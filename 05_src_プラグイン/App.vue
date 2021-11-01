@@ -1,13 +1,14 @@
 <template>
   <div>
-    <School/>
     <Student/>
+    <hr>
+    <School/>
   </div>
 </template>
 
 <script>
-import Student from './components/Student'
 import School from './components/School'
+import Student from './components/Student'
 
 export default {
     name:'App',
