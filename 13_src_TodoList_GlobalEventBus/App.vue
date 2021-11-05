@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import pubsub from 'pubsub-js'
 import MyHeader from './components/MyHeader'
 import List from './components/List'
 import MyFooter from './components/MyFooter'
@@ -38,7 +37,7 @@ export default {
         if(todo.id === id) todo.done = !todo.done
       })
     },
-    deleteTodo(_, id){
+    deleteTodo(id){
       this.todos = this.todos.filter(todo => todo.id !==id)
     },
     checkAllTodo(done){
@@ -62,11 +61,11 @@ export default {
   },
   mounted() {
     this.$bus.$on('checkTodo', this.checkTodo)
-    this.pubId = pubsub.subscribe('deleteTodo',this.deleteTodo)
+    this.$bus.$on('deleteTodo', this.deleteTodo)
   },
   beforeDestroy() {
     this.$bus.$off('checkTodo')
-    pubsub.unsubscribe(this.pubId)
+    this.$bus.$off('deleteTodo')
   },
 }
 </script>
