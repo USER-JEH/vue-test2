@@ -38,11 +38,6 @@ export default {
         if(todo.id === id) todo.done = !todo.done
       })
     },
-    updateTodo(id,title){
-      this.todos.forEach((todo)=>{
-        if(todo.id === id) todo.title = title
-      })
-    },
     deleteTodo(_, id){
       this.todos = this.todos.filter(todo => todo.id !==id)
     },
@@ -67,12 +62,10 @@ export default {
   },
   mounted() {
     this.$bus.$on('checkTodo', this.checkTodo)
-    this.$bus.$on('updateTodo', this.updateTodo)
     this.pubId = pubsub.subscribe('deleteTodo',this.deleteTodo)
   },
   beforeDestroy() {
     this.$bus.$off('checkTodo')
-    this.$bus.$off('updateTodo')
     pubsub.unsubscribe(this.pubId)
   },
 }
@@ -99,14 +92,6 @@ body{
   color: #fff;
   background-color: #da4f49;
   border: 1px solid #bd362f;
-}
-
-
-.btn-edit{
-  color: #fff;
-  background-color: skyblue;
-  border: 1px solid rgb(37, 87, 107);
-  margin-right: 5px;
 }
 
 .btn-danger:hover{

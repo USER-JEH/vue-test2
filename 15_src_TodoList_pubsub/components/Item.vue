@@ -2,17 +2,9 @@
    <li>
         <label>
             <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
-            <span v-show="!todo.isEdit">{{ todo.title }}</span>
-            <input 
-                type="text" 
-                v-show="todo.isEdit" 
-                :value="todo.title" 
-                @blur="handleBlur(todo,$event)"
-            >
+            <span>{{ todo.title }}</span>
         </label>
-        
         <button class="btn btn-danger" @click="handleDelete(todo.id)">Delate</button>
-        <button v-show="!todo.isEdit" class="btn btn-edit" @click="handleEdit(todo)">Edit</button>
     </li>
 </template>
 
@@ -22,12 +14,10 @@ export default {
     name:'Item',
     props:['todo'],
     methods: {
-        //勾选或取消勾选
         handleCheck(id){
             // this.checkTodo(id)
             this.$bus.$emit('checkTodo',id)
         },
-        //删除
         handleDelete(id){
             if(confirm('Are you sure to delete this todolist?')){
                 // this.deleteTodo(id)
@@ -35,20 +25,6 @@ export default {
 
                 pubsub.publish('deleteTodo',id)
             }
-        },
-        //编辑
-        handleEdit(todo){
-            if(todo.hasOwnProperty('isEdit')){
-                todo.isEdit = true
-            }else{
-                console.log('todo have no isEdit')
-                this.$set(todo,'isEdit',true)
-            }
-        },
-        handleBlur(todo,e){
-            todo.isEdit = false
-            if(!e.target.value.trim()) return alert('It is empty')
-            this.$bus.$emit('updateTodo',todo.id,e.target.value)
         }
     }
 }
